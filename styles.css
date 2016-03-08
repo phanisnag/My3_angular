@@ -11,4 +11,11 @@
 }
 .centerText {
 	text-align: center;
+    color: floralwhite;
+}
+body {
+background-color: black;
+}
+.text-center{
+    color: floralwhite;
 }

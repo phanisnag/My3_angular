@@ -1,7 +1,7 @@
 //author P.Tummala
 
 var app = angular.module('myApp', []);
-app.controller('myCtrl', function($scope) {
+app.controller('myCtrl', function($scope,$http) {
     $scope.application = "My3/IIS tech touch-Angular concepts";
     var day;
     switch (new Date().getDay()) {
@@ -27,6 +27,10 @@ app.controller('myCtrl', function($scope) {
         day = "Saturday";
         break;
 }
+    $http.get('index.json')
+        .then(function(res){
+            $scope.edata = res.data;
+        })
 
 if(day == "Friday"){
     day = "Happy friday";
@@ -36,6 +40,18 @@ if(day == "Friday"){
     	$scope.idx = day;
         $scope.d = new Date();
 
-
-
+var srikanth = {
+    firstName : "first",
+    lastName : "last",
+    gender : "male"
+}
+$scope.srikanth = srikanth;
 });
+app.controller('nextPage',[ngRoute])
+    .config('$routeProvider',function($routeProvider) {
+        $routeProvider
+            .when('/nextPage/', {
+                controller: "nextPage",
+                templateUrl: "localhost:10001/nextpage.html"
+            })
+    });
